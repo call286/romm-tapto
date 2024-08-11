@@ -48,5 +48,8 @@ export type RomSchema = {
   updated_at: string;
   rom_user?: RomUserSchema | null;
   sibling_roms?: Array<RomSchema>;
+  mister_path: string | "";
+  mister_tapto_host: string | "";
+  mister_tapto_port: number | 7497;
   readonly sort_comparator: string;
 };
