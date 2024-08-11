@@ -3,6 +3,7 @@ import { themes, dark, light, autoThemeKey } from "@/styles/themes";
 import { isKeyof } from "@/types";
 import "vuetify/styles";
 import "@mdi/font/css/materialdesignicons.css";
+import { customIconSet } from "../styles/customIconSet";
 
 const mediaMatch = window.matchMedia("(prefers-color-scheme: dark)");
 mediaMatch.addEventListener("change", (event) => {
@@ -26,6 +27,9 @@ function getTheme() {
 const instance = createVuetify({
   icons: {
     defaultSet: "mdi",
+    sets: {
+      customIconSet,
+    },
   },
   theme: {
     defaultTheme: getTheme(),

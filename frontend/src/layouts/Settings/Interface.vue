@@ -23,6 +23,11 @@ const languagesRef = ref(
   isNull(storedLanguages) ? true : storedLanguages === "true"
 );
 
+const storedMiSTer = localStorage.getItem("settings.showMiSTer");
+const miSTerRef = ref(
+  isNull(storedMiSTer) ? true : storedMiSTer === "true"
+);
+
 // Functions to update localStorage
 const toggleGroupRoms = (value: boolean) => {
   groupRomsRef.value = value;
@@ -42,6 +47,11 @@ const toggleRegions = (value: boolean) => {
 const toggleLanguages = (value: boolean) => {
   languagesRef.value = value;
   localStorage.setItem("settings.showLanguages", value.toString());
+};
+
+const toggleMiSTer = (value: boolean) => {
+  miSTerRef.value = value;
+  localStorage.setItem("settings.showMiSTer", value.toString());
 };
 
 const options = computed(() => [
@@ -78,6 +88,15 @@ const options = computed(() => [
     iconDisabled: "mdi-flag-off-outline",
     model: languagesRef,
     modelTrigger: toggleLanguages,
+  },
+  {
+    title: "Show MiSTer",
+    description:
+      'Show MiSTer path entry in edit game and MiSTer start button on games',
+    iconEnabled: "mdi-account-group-outline",
+    iconDisabled: "mdi-account-outline",
+    model: miSTerRef,
+    modelTrigger: toggleMiSTer,
   },
 ]);
 </script>

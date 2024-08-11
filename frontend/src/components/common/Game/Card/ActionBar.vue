@@ -4,6 +4,12 @@ import romApi from "@/services/api/rom";
 import storeDownload from "@/stores/download";
 import type { SimpleRom } from "@/stores/roms";
 import { isEmulationSupported } from "@/utils";
+import MiSTerBtn from "@/components/common/Game/MiSTerBtn.vue";
+import { isNull } from "lodash";
+
+const showMiSTer = isNull(localStorage.getItem("settings.showMiSTer"))
+  ? false
+  : localStorage.getItem("settings.showMiSTer") === "true";
 
 // Props
 defineProps<{ rom: SimpleRom }>();
@@ -38,6 +44,9 @@ const downloadStore = storeDownload();
         rounded="0"
         variant="text"
       />
+    </v-col>
+    <v-col v-if="showMiSTer">
+      <MiSTerBtn :rom=rom class="action-bar-btn-small" icon size="x-small" />
     </v-col>
     <v-menu location="bottom">
       <template #activator="{ props }">

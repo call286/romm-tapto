@@ -116,6 +116,10 @@ class RomSchema(BaseModel):
     rom_user: RomUserSchema | None = Field(default=None)
     sibling_roms: list[RomSchema] = Field(default_factory=list)
 
+    mister_path: str | None = Field(default="")
+    mister_tapto_host: str | None = Field(default="")
+    mister_tapto_port: int | None = Field(default=7497)
+
     class Config:
         from_attributes = True
 

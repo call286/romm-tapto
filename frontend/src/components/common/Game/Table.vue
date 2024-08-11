@@ -17,6 +17,11 @@ import type { Emitter } from "mitt";
 import { inject, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useDisplay } from "vuetify";
+import MiSTerBtn from "@/components/common/Game/MiSTerBtn.vue";
+
+const showMiSTer = isNull(localStorage.getItem("settings.showMiSTer"))
+  ? false
+  : localStorage.getItem("settings.showMiSTer") === "true";
 
 // Props
 const { xs } = useDisplay();
@@ -186,6 +191,7 @@ onMounted(() => {
         >
           <v-icon>mdi-play</v-icon>
         </v-btn>
+        <MiSTerBtn :rom=item size="small" v-if="showMiSTer" />
         <v-menu location="bottom">
           <template #activator="{ props }">
             <v-btn v-bind="props" size="small">

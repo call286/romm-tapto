@@ -158,6 +158,19 @@ function closeDialog() {
           </v-row>
           <v-row class="pa-2" no-gutters>
             <v-col>
+              <v-text-field
+                class="py-2"
+                :class="{ 'pr-4': lgAndUp }"
+                @keyup.enter="updateRom()"
+                v-model="rom.mister_path"
+                label="MiSTer Path"
+                variant="outlined"
+                hide-details
+              />
+            </v-col>
+          </v-row>
+          <v-row class="pa-2" no-gutters>
+            <v-col>
               <v-textarea
                 v-model="rom.summary"
                 class="py-2"

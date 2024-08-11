@@ -50,4 +50,7 @@
    <Config Name="SCHEDULED_RESCAN_CRON" Target="SCHEDULED_RESCAN_CRON" Default="0 3 * * *" Mode="" Description="Cron expression for scheduled scan" Type="Variable" Display="advanced" Required="false" Mask="false"/>
    <Config Name="ENABLE_SCHEDULED_UPDATE_SWITCH_TITLEDB" Target="ENABLE_SCHEDULED_UPDATE_SWITCH_TITLEDB" Default="false" Mode="" Description="Update Switch TitleDB on a schedule" Type="Variable" Display="advanced" Required="false" Mask="false"/>
    <Config Name="SCHEDULED_UPDATE_SWITCH_TITLEDB_CRON" Target="SCHEDULED_UPDATE_SWITCH_TITLEDB_CRON" Default="0 4 * * *" Mode="" Description="Cron expression for scheduled Switch TitleDB update" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+   <Config Name="MISTER_TAPTO_HOST" Target="MISTER_TAPTO_HOST" Default="mister.local" Mode="" Description="MiSTer Hostname where TapTo Service is running" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+   <Config Name="MISTER_TAPTO_PORT" Target="MISTER_TAPTO_PORT" Default="7497" Mode="" Description="Port on which TapTo Service is listening" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+   <Config Name="ENABLE_MISTER_TAPTO" Target="MISTER_TAPTO_PORT" Default="false" Mode="" Description="Enable MiSTer TapTo support" Type="Variable" Display="advanced" Required="false" Mask="false"/>
 </Container>

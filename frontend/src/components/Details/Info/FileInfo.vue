@@ -9,6 +9,12 @@ import type { Platform } from "@/stores/platforms";
 import type { DetailedRom } from "@/stores/roms";
 import { formatBytes } from "@/utils";
 import { ref, watch } from "vue";
+import MiSTerBtn from "@/components/common/Game/MiSTerBtn.vue";
+import { isNull } from "lodash";
+
+const showMiSTer = isNull(localStorage.getItem("settings.showMiSTer"))
+  ? false
+  : localStorage.getItem("settings.showMiSTer") === "true";
 
 // Props
 const props = defineProps<{ rom: DetailedRom; platform: Platform }>();
@@ -126,6 +132,14 @@ watch(
             clearable
             chips
           />
+        </v-col>
+      </v-row>
+      <v-row class="align-center my-3" no-gutters v-if="showMiSTer">
+        <v-col cols="3" xl="2">
+          <span>MiSTer</span>
+        </v-col>
+        <v-col class="text-body-1">
+          <MiSTerBtn :rom=rom class="my-1 bg-terciary" icon size="small" />
         </v-col>
       </v-row>
       <v-row no-gutters class="align-center my-3">

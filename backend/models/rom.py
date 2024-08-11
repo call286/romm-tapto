@@ -3,7 +3,12 @@ from __future__ import annotations
 from functools import cached_property
 from typing import TYPE_CHECKING, Any
 
-from config import FRONTEND_RESOURCES_PATH
+from config import (
+    FRONTEND_RESOURCES_PATH,
+    MISTER_TAPTO_HOST,
+    MISTER_TAPTO_PORT,
+    ENABLE_MISTER_TAPTO
+)
 from models.base import BaseModel
 from sqlalchemy import JSON, BigInteger, ForeignKey, String, Text, UniqueConstraint
 from sqlalchemy.dialects.mysql.json import JSON as MySQLJSON
@@ -72,6 +77,8 @@ class Rom(BaseModel):
     screenshots: Mapped[list[Screenshot]] = relationship(back_populates="rom")
     rom_users: Mapped[list[RomUser]] = relationship(back_populates="rom")
 
+    mister_path: Mapped[str] = mapped_column(String(length=1000), default="")
+
     @property
     def platform_slug(self) -> str:
         return self.platform.slug
@@ -97,6 +104,14 @@ class Rom(BaseModel):
         return [s.download_path for s in self.screenshots] + [
             f"{FRONTEND_RESOURCES_PATH}/{s}" for s in self.path_screenshots
         ]
+
+    @cached_property
+    def mister_tapto_host(self) -> str:
+        return MISTER_TAPTO_HOST
+
+    @cached_property
+    def mister_tapto_port(self) -> int:
+        return MISTER_TAPTO_PORT
 
     # This is an expensive operation so don't call it on a list of roms
     def get_sibling_roms(self) -> list[Rom]:

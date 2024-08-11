@@ -85,3 +85,8 @@ SCHEDULED_UPDATE_SWITCH_TITLEDB_CRON: Final = os.environ.get(
 
 # TESTING
 IS_PYTEST_RUN: Final = bool(os.environ.get("PYTEST_VERSION", False))
+
+# MiSTer TapTo
+MISTER_TAPTO_HOST: Final = os.environ.get("MISTER_TAPTO_HOST", "mister.local")
+MISTER_TAPTO_PORT: Final = os.environ.get("MISTER_TAPTO_PORT", 7497)
+ENABLE_MISTER_TAPTO: Final = (os.environ.get("ENABLE_MISTER_TAPTO", "false") == "true")

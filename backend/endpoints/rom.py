@@ -408,6 +408,8 @@ async def update_rom(
                     {"path_cover_s": path_cover_s, "path_cover_l": path_cover_l}
                 )
 
+    cleaned_data.update({"mister_path": data.get("mister_path", rom.mister_path)})
+    
     db_rom_handler.update_rom(id, cleaned_data)
 
     return DetailedRomSchema.from_orm_with_request(db_rom_handler.get_rom(id), request)

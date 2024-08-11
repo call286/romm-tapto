@@ -1,5 +1,6 @@
 import cronstrue from "cronstrue";
 import type { SimpleRom } from "@/stores/roms";
+import axios from "axios";
 
 export const views: Record<
   number,
@@ -347,4 +348,9 @@ export function getSupportedCores(platformSlug: string) {
 
 export function isEmulationSupported(platformSlug: string) {
   return platformSlug.toLowerCase() in _EJS_CORES_MAP;
+}
+
+export function mistertaptorom(rom: SimpleRom) {
+  const mistertaptolink = "http://"+rom.mister_tapto_host+":"+rom.mister_tapto_port+"/api/v1/launch/"+encodeURI(rom.mister_path);
+  axios.get(mistertaptolink);
 }
