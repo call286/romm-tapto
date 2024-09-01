@@ -1,5 +1,6 @@
 import cronstrue from "cronstrue";
 import type { SimpleRom } from "@/stores/roms";
+import type { Heartbeat } from "@/stores/heartbeat";
 import axios from "axios";
 
 export const views: Record<
@@ -342,12 +343,28 @@ const _EJS_CORES_MAP = {
 
 export type EJSPlatformSlug = keyof typeof _EJS_CORES_MAP;
 
-export function getSupportedCores(platformSlug: string) {
+export function getSupportedEJSCores(platformSlug: string) {
   return _EJS_CORES_MAP[platformSlug.toLowerCase() as EJSPlatformSlug] || [];
 }
 
-export function isEmulationSupported(platformSlug: string) {
-  return platformSlug.toLowerCase() in _EJS_CORES_MAP;
+export function isEJSEmulationSupported(
+  platformSlug: string,
+  heartbeat: Heartbeat,
+) {
+  return (
+    platformSlug.toLowerCase() in _EJS_CORES_MAP &&
+    !heartbeat.EMULATION.DISABLE_EMULATOR_JS
+  );
+}
+
+export function isRuffleEmulationSupported(
+  platformSlug: string,
+  heartbeat: Heartbeat,
+) {
+  return (
+    ["flash", "browser"].includes(platformSlug.toLowerCase()) &&
+    !heartbeat.EMULATION.DISABLE_RUFFLE_RS
+  );
 }
 
 export function mistertaptorom(rom: SimpleRom) {
