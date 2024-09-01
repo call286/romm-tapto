@@ -51,6 +51,9 @@ export type SimpleRomSchema = {
     full_path: string;
     created_at: string;
     updated_at: string;
+    mister_path: (string | "");
+    mister_tapto_host: (string | "");
+    mister_tapto_port: (number | 7497);
     sibling_roms?: Array<RomSchema>;
     rom_user?: (RomUserSchema | null);
     readonly sort_comparator: string;

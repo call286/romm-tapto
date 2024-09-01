@@ -1,7 +1,7 @@
 """empty message
 
-Revision ID: 0025_roms_hashes
-Revises: 0024_sibling_roms_db_view
+Revision ID: 0026_roms_hashes
+Revises: 0025_sibling_roms_db_view
 Create Date: 2024-08-11 21:50:53.301352
 
 """
@@ -14,8 +14,8 @@ from handler.redis_handler import high_prio_queue
 from handler.scan_handler import ScanType
 
 # revision identifiers, used by Alembic.
-revision = "0025_roms_hashes"
-down_revision = "0024_sibling_roms_db_view"
+revision = "0026_roms_hashes"
+down_revision = "0025_sibling_roms_db_view"
 branch_labels = None
 depends_on = None
 

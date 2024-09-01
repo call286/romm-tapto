@@ -1,0 +1,28 @@
+kind: pipeline
+name: default
+type: docker
+
+steps:
+- name: docker - ROMM-with-tapto
+  image: plugins/docker
+  settings:
+    registry: harbor.lan.dercompdoc.de
+    insecure: true
+    username:
+      from_secret: harbor_username
+    password:
+      from_secret: harbor_password
+    repo: harbor.lan.dercompdoc.de/library/romm-mister-tapto
+    tags:
+    - latest
+    - main
+    - 3.3.0
+    ssh-agent-key:
+      from_secret: private_key
+    # context: rtarefilljs
+    dockerfile: docker/Dockerfile
+    purge: true
+    custom_dns:
+    - 192.168.40.253
+    - 192.168.5.253
+    # ipv6: false
